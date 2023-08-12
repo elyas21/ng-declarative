@@ -1,0 +1,40 @@
+<div class="flex h-screen min-w-[22rem]">
+    <!-- Sidebar -->
+    <div
+      class="bg-gray-800 text-white min-w-0 w-1/4 overflow-hidden transition-all"
+      [ngClass]="{
+        'w-16': !showText && isMobileView,
+        'w-1/4': showText || !isMobileView
+      }"
+    >
+      <div class="p-4">
+        <!-- Hamburger Menu Toggle -->
+        <button
+          class="block  text-white focus:outline-none"
+          (click)="toggleTextVisibility()"
+        >
+          <i class="fa fa-bars fa-2x"></i>
+        </button>
+        
+        <!-- <h2 class="text-lg font-semibold mb-4">Navigation</h2> -->
+        <ul class="space-y-2">
+          <li
+            *ngFor="let item of menuItems"
+          >
+            <a
+[routerLink]="item.path"              class="flex items-center"
+            >
+              <i [ngClass]="['fa', 'fa-' + item.icon, 'mr-2']"></i>
+              <span *ngIf="!isMobileView">{{ item.text }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+      <!-- Your main content goes here -->
+    </div>
+  </div>
+  
